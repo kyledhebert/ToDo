@@ -5,12 +5,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class ToDoActivity extends AppCompatActivity {
+public class ToDoListActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_to_do);
+        setContentView(R.layout.activity_fragment);
     }
 
     @Override
