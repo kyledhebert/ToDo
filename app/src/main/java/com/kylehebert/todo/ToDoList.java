@@ -28,7 +28,7 @@ public class ToDoList {
         mToDos = new ArrayList<>();
         for (int i = 0; i < 20; i++) {
             ToDo toDo = new ToDo();
-            toDo.setTitle("ToDo :" + i);
+            toDo.setTitle("ToDo: " + i);
             toDo.setCompleted(i % 2 == 0); //completes every other one
             mToDos.add(toDo);
         }

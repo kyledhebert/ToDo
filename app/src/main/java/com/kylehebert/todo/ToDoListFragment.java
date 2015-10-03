@@ -1,5 +1,6 @@
 package com.kylehebert.todo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.util.List;
 
 /**
@@ -19,6 +22,7 @@ public class ToDoListFragment extends Fragment {
 
     private RecyclerView mToDoRecyclerView;
     private ToDoAdapter mToDoAdapter;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -41,7 +45,8 @@ public class ToDoListFragment extends Fragment {
         mToDoRecyclerView.setAdapter(mToDoAdapter);
     }
 
-    private class ToDoHolder extends RecyclerView.ViewHolder {
+    private class ToDoHolder extends RecyclerView.ViewHolder
+            implements View.OnClickListener {
 
         private TextView mTitleTextView;
         private CheckBox mCompletedCheckbox;
@@ -50,6 +55,7 @@ public class ToDoListFragment extends Fragment {
 
         public ToDoHolder(View view){
             super(view);
+            itemView.setOnClickListener(this);
 
             mTitleTextView = (TextView)
                     itemView.findViewById(R.id.list_item_to_do_title_text_view);
@@ -58,12 +64,20 @@ public class ToDoListFragment extends Fragment {
 
         }
 
+        @Override
+        public void onClick(View view) {
+            Intent intent = ToDoActivity.newIntent(getActivity(), mToDo.getId());
+            startActivity(intent);
+        }
+
         public void bindToDo(ToDo toDo) {
 
             mToDo = toDo;
             mTitleTextView.setText(mToDo.getTitle());
             mCompletedCheckbox.setChecked(mToDo.isCompleted());
         }
+
+
     }
 
     private class ToDoAdapter extends RecyclerView.Adapter<ToDoHolder> {
