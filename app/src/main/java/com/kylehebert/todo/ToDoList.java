@@ -23,8 +23,15 @@ public class ToDoList {
         return sToDoList;
     }
 
+    //generates a sample list of ToDos until adding them is implemented
     private ToDoList(Context context){
         mToDos = new ArrayList<>();
+        for (int i = 0; i < 20; i++) {
+            ToDo toDo = new ToDo();
+            toDo.setTitle("ToDo :" + i);
+            toDo.setCompleted(i % 2 == 0); //completes every other one
+            mToDos.add(toDo);
+        }
     }
 
     public List<ToDo> getToDos(){
@@ -39,6 +46,7 @@ public class ToDoList {
         }
         return null;
     }
+
 
 
 
