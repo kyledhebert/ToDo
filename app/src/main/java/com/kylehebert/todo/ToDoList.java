@@ -14,7 +14,7 @@ public class ToDoList {
 
     private static ToDoList sToDoList;
 
-    private List<ToDoItem> mToDoItems;
+    private List<ToDo> mToDos;
 
     public static ToDoList get (Context context) {
         if (sToDoList == null){
@@ -24,17 +24,17 @@ public class ToDoList {
     }
 
     private ToDoList(Context context){
-        mToDoItems = new ArrayList<>();
+        mToDos = new ArrayList<>();
     }
 
-    public List<ToDoItem> getToDoItems(){
-        return mToDoItems;
+    public List<ToDo> getToDos(){
+        return mToDos;
     }
 
-    public ToDoItem getToDo(UUID id){
-        for (ToDoItem toDoItem : mToDoItems){
-            if (toDoItem.getId().equals(id)) {
-                return toDoItem;
+    public ToDo getToDo(UUID id){
+        for (ToDo toDo : mToDos){
+            if (toDo.getId().equals(id)) {
+                return toDo;
             }
         }
         return null;

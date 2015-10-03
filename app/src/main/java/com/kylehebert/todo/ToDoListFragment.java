@@ -34,9 +34,9 @@ public class ToDoListFragment extends Fragment {
 
     private void updateUI(){
         ToDoList toDoList = ToDoList.get(getActivity());
-        List<ToDoItem> toDoItems = toDoList.getToDoItems();
+        List<ToDo> toDos = toDoList.getToDos();
 
-        mToDoAdapter = new ToDoAdapter(toDoItems);
+        mToDoAdapter = new ToDoAdapter(toDos);
         mToDoRecyclerView.setAdapter(mToDoAdapter);
     }
 
@@ -53,10 +53,10 @@ public class ToDoListFragment extends Fragment {
 
     private class ToDoAdapter extends RecyclerView.Adapter<ToDoHolder> {
 
-        private List<ToDoItem> mToDoItems;
+        private List<ToDo> mToDos;
 
-        public ToDoAdapter(List<ToDoItem> toDoItems) {
-            mToDoItems = toDoItems;
+        public ToDoAdapter(List<ToDo> toDos) {
+            mToDos = toDos;
         }
 
         @Override
@@ -69,13 +69,13 @@ public class ToDoListFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(ToDoHolder toDoHolder, int position){
-            ToDoItem toDoItem = mToDoItems.get(position);
-            toDoHolder.mTitleTextView.setText(toDoItem.getTitle());
+            ToDo toDo = mToDos.get(position);
+            toDoHolder.mTitleTextView.setText(toDo.getTitle());
         }
 
         @Override
         public int getItemCount(){
-            return mToDoItems.size();
+            return mToDos.size();
         }
 
     }

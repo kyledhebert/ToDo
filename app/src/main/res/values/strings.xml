@@ -3,4 +3,8 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="to_do_title_hint">Enter a to do item.</string>
+    <string name="to_do_title_label">Title</string>
+    <string name="to_do_details_label">Details</string>
+    <string name="to_do_complete_label">Completed</string>
 </resources>

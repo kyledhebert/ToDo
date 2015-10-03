@@ -7,14 +7,14 @@ import java.util.UUID;
  * Created by kylehebert on 9/28/15. Objects of this class will
  * represent an individual task on the user's list
  */
-public class ToDoItem {
+public class ToDo {
 
     private UUID mId;
     private String mTitle;
     private Date mDate;
     private boolean mCompleted;
 
-    public ToDoItem(){
+    public ToDo(){
         //each task gets a unique ID
         mId = UUID.randomUUID();
         mDate = new Date();
