@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import java.util.List;
 
@@ -41,13 +42,27 @@ public class ToDoListFragment extends Fragment {
     }
 
     private class ToDoHolder extends RecyclerView.ViewHolder {
-        public TextView mTitleTextView;
+
+        private TextView mTitleTextView;
+        private CheckBox mCompletedCheckbox;
+
+        private ToDo mToDo;
 
         public ToDoHolder(View view){
             super(view);
 
-            mTitleTextView = (TextView) view;
+            mTitleTextView = (TextView)
+                    itemView.findViewById(R.id.list_item_to_do_title_text_view);
+            mCompletedCheckbox = (CheckBox)
+                    itemView.findViewById(R.id.list_item_to_do_completed_check_box);
 
+        }
+
+        public void bindToDo(ToDo toDo) {
+
+            mToDo = toDo;
+            mTitleTextView.setText(mToDo.getTitle());
+            mCompletedCheckbox.setChecked(mToDo.isCompleted());
         }
     }
 
@@ -62,7 +77,7 @@ public class ToDoListFragment extends Fragment {
         @Override
         public ToDoHolder onCreateViewHolder(ViewGroup parent, int viewType){
             LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
-            View view = layoutInflater.inflate(android.R.layout.simple_list_item_1,
+            View view = layoutInflater.inflate(R.layout.list_item_to_do,
                     parent, false);
             return new ToDoHolder(view);
         }
@@ -70,7 +85,7 @@ public class ToDoListFragment extends Fragment {
         @Override
         public void onBindViewHolder(ToDoHolder toDoHolder, int position){
             ToDo toDo = mToDos.get(position);
-            toDoHolder.mTitleTextView.setText(toDo.getTitle());
+            toDoHolder.bindToDo(toDo);
         }
 
         @Override
