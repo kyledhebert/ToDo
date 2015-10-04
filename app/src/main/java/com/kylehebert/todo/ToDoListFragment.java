@@ -10,8 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import java.util.List;
 
 /**
@@ -37,12 +35,25 @@ public class ToDoListFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateUI();
+    }
+
     private void updateUI(){
         ToDoList toDoList = ToDoList.get(getActivity());
         List<ToDo> toDos = toDoList.getToDos();
 
-        mToDoAdapter = new ToDoAdapter(toDos);
-        mToDoRecyclerView.setAdapter(mToDoAdapter);
+        //check if a To Do gets modified, and if so update the RecyclerView
+
+        if (mToDoAdapter == null) {
+            mToDoAdapter = new ToDoAdapter(toDos);
+            mToDoRecyclerView.setAdapter(mToDoAdapter);
+        } else {
+            mToDoAdapter.notifyDataSetChanged();
+        }
+
     }
 
     private class ToDoHolder extends RecyclerView.ViewHolder
@@ -66,7 +77,7 @@ public class ToDoListFragment extends Fragment {
 
         @Override
         public void onClick(View view) {
-            Intent intent = ToDoActivity.newIntent(getActivity(), mToDo.getId());
+            Intent intent = ToDoPagerActivity.newIntent(getActivity(), mToDo.getId());
             startActivity(intent);
         }
 

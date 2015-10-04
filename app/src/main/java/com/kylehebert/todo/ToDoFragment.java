@@ -27,7 +27,7 @@ public class ToDoFragment extends Fragment {
 
 
     /*
-    ToDoActivity will call newInstance when it needs to create a ToDoFragment
+    Activities will call newInstance when they need to create a ToDoFragment
      */
     public static ToDoFragment newInstance(UUID toDoId) {
         Bundle args = new Bundle();
