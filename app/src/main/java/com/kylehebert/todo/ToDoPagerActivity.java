@@ -57,5 +57,17 @@ public class ToDoPagerActivity extends FragmentActivity {
                 return mToDos.size();
             }
         });
+
+        /*
+        find the index of the To-Do to display by looping through and and checking each To-Dos' ID. When the
+        To-Do ID matches the ID in the intent extra, set the current item to the index of that to-do. This
+        makes sure the ViewPager begins with the select To-Do and not the first.
+         */
+        for (int i = 0; i < mToDos.size(); i++) {
+            if (mToDos.get(i).getId().equals(toDoId)) {
+                mViewPager.setCurrentItem(i);
+                break;
+            }
+        }
     }
 }
