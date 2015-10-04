@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 
 import java.util.List;
 import java.util.UUID;
@@ -16,7 +17,7 @@ import java.util.UUID;
  * Created by kylehebert on 10/3/15. Allows the user to
  * page through the list of to dos by swiping left and right.
  */
-public class ToDoPagerActivity extends FragmentActivity {
+public class ToDoPagerActivity extends AppCompatActivity {
 
     private static final String EXTRA_TO_DO_ID = "com.kylehebert.todo.to_do_id";
 
