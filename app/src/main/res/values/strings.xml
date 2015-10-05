@@ -9,4 +9,7 @@
     <string name="to_do_complete_label">Completed</string>
     <string name="to_do_remove_button">Delete</string>
     <string name="new_to_do">New ToDo</string>
+    <string name="empty_list_message">Your list is empty.
+        Use + to add a to-do</string>
+
 </resources>

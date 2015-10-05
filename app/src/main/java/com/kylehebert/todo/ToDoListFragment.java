@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import java.util.List;
 
@@ -23,6 +24,8 @@ public class ToDoListFragment extends Fragment {
 
     private RecyclerView mToDoRecyclerView;
     private ToDoAdapter mToDoAdapter;
+
+    private LinearLayout mEmptyListLayout;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,6 +40,9 @@ public class ToDoListFragment extends Fragment {
 
         mToDoRecyclerView = (RecyclerView) view.findViewById(R.id.to_do_recycler_view);
         mToDoRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        //this is only visible when the list is empty
+        mEmptyListLayout = (LinearLayout) view.findViewById(R.id.empty_list_layout);
 
         updateUI();
 
@@ -85,6 +91,11 @@ public class ToDoListFragment extends Fragment {
             mToDoRecyclerView.setAdapter(mToDoAdapter);
         } else {
             mToDoAdapter.notifyDataSetChanged();
+        }
+
+        //if the list is empty, hide the recycler view
+        if (toDos.size() == 0) {
+            mToDoRecyclerView.setVisibility(View.GONE);
         }
 
     }
