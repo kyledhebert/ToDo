@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
@@ -52,6 +53,25 @@ public class ToDoListFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater menuInflater) {
         super.onCreateOptionsMenu(menu, menuInflater);
         menuInflater.inflate(R.menu.fragment_to_do_list, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem) {
+        switch (menuItem.getItemId()) {
+            /*
+            Choosing Add To-Do in the menu creates a new To-Do and adds it to the ToDoList.
+            Next, an instance of ToDoPagerActivity is started so the user can edit the To-Do.
+             */
+            case R.id.menu_item_new_to_do:
+                ToDo toDo = new ToDo();
+                ToDoList.get(getActivity()).addToDo(toDo);
+                Intent intent = ToDoPagerActivity.newIntent(getActivity(),toDo.getId());
+                startActivity(intent);
+                return true;
+                //other options can be added here
+            default:
+                return super.onOptionsItemSelected(menuItem);
+        }
     }
 
     private void updateUI(){
