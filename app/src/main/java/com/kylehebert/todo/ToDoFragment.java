@@ -7,6 +7,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -22,6 +23,7 @@ public class ToDoFragment extends Fragment {
     private ToDo mToDo;
     private EditText mTitleField;
     private CheckBox mCompletedCheckBox;
+    private Button mDeleteButton;
 
     private static final String ARG_TO_DO_ID = "com.kylehebert.todo.to_do_id";
 
@@ -78,8 +80,20 @@ public class ToDoFragment extends Fragment {
         mCompletedCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                //when checked set the to do's completed property
+                //when checked set the to-dos completed property
                 mToDo.setCompleted(isChecked);
+            }
+        });
+
+        mDeleteButton = (Button)view.findViewById(R.id.remove_to_do_button);
+        mDeleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ToDoList.get(getActivity()).removeToDo(mToDo);
+                //call finish on the host activity to return to the list
+                getActivity().finish();
+
+
             }
         });
 

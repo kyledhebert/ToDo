@@ -7,5 +7,6 @@
     <string name="to_do_title_label">Title</string>
     <string name="to_do_details_label">Details</string>
     <string name="to_do_complete_label">Completed</string>
+    <string name="to_do_remove_button">Delete</string>
     <string name="new_to_do">New ToDo</string>
 </resources>

@@ -18,6 +18,10 @@ public class ToDoList {
         mToDos.add(toDo);
     }
 
+    public void removeToDo(ToDo toDo) {
+        mToDos.remove(toDo);
+    }
+
     private List<ToDo> mToDos;
 
     public static ToDoList get (Context context) {
